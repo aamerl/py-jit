@@ -1,0 +1,8 @@
+{
+	"name": "JIT",
+	"dockerComposeFile": [
+		"../docker-compose.yml"
+	],
+	"service": "app",
+	"workspaceFolder": "/home/"
+}
