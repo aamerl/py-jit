@@ -15,10 +15,10 @@ def matrix_multiply(A: NDArray[float64], B: NDArray[float64]) -> NDArray[float64
         for j in range(p):
             for k in range(n):
                 C[i,j] += A[i,k] * B[k, j]
-    return
+    return C
 
 
-@jit
+@jit(cache=True)
 def matrix_multiply_numba(A: NDArray[float64], B: NDArray[float64]) -> NDArray[float64]:
     m, n = A.shape
     n, p = B.shape
@@ -44,8 +44,8 @@ def setup_log():
 if __name__ == "__main__":
     logger = setup_log()
 
-    A = random.random((300, 500))
-    B = random.random((500, 400))
+    A = random.random((80, 90)) # (80*80)*(2*90 -1)
+    B = random.random((90, 80))
 
     st = time.time()
     C = matrix_multiply(A, B)
