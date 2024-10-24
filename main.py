@@ -1,10 +1,8 @@
-
 import time
 import logging
 from numba import jit
 from numpy import float64, zeros, random
 from numpy._typing import NDArray
-
 
 
 def matrix_multiply(A: NDArray[float64], B: NDArray[float64]) -> NDArray[float64]:
@@ -14,7 +12,7 @@ def matrix_multiply(A: NDArray[float64], B: NDArray[float64]) -> NDArray[float64
     for i in range(m):
         for j in range(p):
             for k in range(n):
-                C[i,j] += A[i,k] * B[k, j]
+                C[i, j] += A[i, k] * B[k, j]
     return C
 
 
@@ -26,7 +24,7 @@ def matrix_multiply_numba(A: NDArray[float64], B: NDArray[float64]) -> NDArray[f
     for i in range(m):
         for j in range(p):
             for k in range(n):
-                C[i,j] += A[i,k] * B[k, j]
+                C[i, j] += A[i, k] * B[k, j]
     return C
 
 
@@ -35,7 +33,7 @@ def setup_log():
     logger.setLevel(logging.DEBUG)
     handler = logging.StreamHandler()
     handler.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
     handler.setFormatter(formatter)
     logger.addHandler(handler)
     return logger
@@ -44,7 +42,7 @@ def setup_log():
 if __name__ == "__main__":
     logger = setup_log()
 
-    A = random.random((80, 90)) # (80*80)*(2*90 -1)
+    A = random.random((80, 90))  # (80*80)*(2*90 -1)
     B = random.random((90, 80))
 
     st = time.time()
